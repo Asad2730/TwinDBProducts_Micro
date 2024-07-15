@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { Create, DeleteByID, GetAll, GetByID, UpdateByID } from '../controller/product';
+import { Create, DeleteByID, GetAll, GetByID, IncrementLikeByID, UpdateByID } from '../controller/product';
 
 
 const app = Router();
@@ -9,6 +9,7 @@ app.post('/',Create)
 app.get('/:id',GetByID)
 app.put('/:id',UpdateByID)
 app.delete('/:id',DeleteByID)
+app.post('/:id',IncrementLikeByID)
 
 
 export const productRoutes = app;

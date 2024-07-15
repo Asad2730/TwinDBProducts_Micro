@@ -1,6 +1,7 @@
 import { type Request, type Response } from "express";
 import { Db } from "../conn/db";
 import { Product } from "../entity/product";
+import { Repository, type DeepPartial } from "typeorm";
 
 export const GetAll = async (req: Request, res: Response) => {
     try {
@@ -59,6 +60,23 @@ export const DeleteByID = async (req: Request, res: Response) => {
     try {
         const results = await Db.getRepository(Product).delete(req.params)
         return res.status(200).json(results)
+    } catch (ex) {
+        return res.status(500).json(ex)
+    }
+}
+
+
+export const IncrementLikeByID = async (req: Request, res: Response) => {
+    try {
+        const product = await Db.getRepository(Product).findOne(req.params)
+        if (!product) {
+            res.status(404).json(`product not found with id ${req.params}`)
+            return
+        }
+       
+       product.likes++
+       const result = await Db.getRepository(Product).save(product as DeepPartial<Product>);
+       return res.status(200).json(result)
     } catch (ex) {
         return res.status(500).json(ex)
     }
