@@ -1,10 +1,10 @@
 {
-  "name": "admin",
+  "name": "main",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
     "@types/amqplib": "^0.10.5",
-    "@types/bun": "^1.1.6",
+    "@types/bun": "latest",
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21"
@@ -18,11 +18,10 @@
   },
   "dependencies": {
     "amqplib": "^0.10.4",
+    "axios": "^1.7.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "pg": "^8.12.0",
-    "reflect-metadata": "^0.2.2",
-    "typeorm": "^0.3.20"
+    "mongoose": "^8.5.1"
   }
 }
